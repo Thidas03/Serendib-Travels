@@ -18,6 +18,7 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium transition-colors">Home</Link>
+            <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium transition-colors">About Us</Link>
             <Link href="/destinations" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium transition-colors">Destinations</Link>
             <Link href="/login" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-md font-medium transition-all shadow-sm hover:shadow-md">
               Login
