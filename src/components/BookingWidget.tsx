@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface BookingWidgetProps {
@@ -13,7 +13,15 @@ export default function BookingWidget({ destinationId, price }: BookingWidgetPro
   const [travelers, setTravelers] = useState(1);
   const [isBooking, setIsBooking] = useState(false);
   const [error, setError] = useState('');
+  const [minDate, setMinDate] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    // Get tomorrow's date for the min date attribute on the client only
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    setMinDate(tomorrow.toISOString().split('T')[0]);
+  }, []);
 
   const totalPrice = price * travelers;
 
@@ -55,11 +63,6 @@ export default function BookingWidget({ destinationId, price }: BookingWidgetPro
       setIsBooking(false);
     }
   };
-
-  // Get tomorrow's date for the min date attribute
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDate = tomorrow.toISOString().split('T')[0];
 
   return (
     <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-sm sticky top-24">
