@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Navbar() {
@@ -6,8 +7,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">
-              <span className="text-emerald-600 dark:text-emerald-400">Serendib</span> Travels
+            <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-3">
+              <div className="relative w-10 h-10 overflow-hidden rounded-full border border-emerald-100 dark:border-emerald-900 shadow-sm">
+                <Image src="/logo.png" alt="Serendib Travels Logo" fill className="object-cover" />
+              </div>
+              <div>
+                <span className="text-emerald-600 dark:text-emerald-400">Serendib</span> Travels
+              </div>
             </Link>
           </div>
           <div className="hidden md:flex items-center space-x-8">

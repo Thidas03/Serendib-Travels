@@ -1,72 +1,44 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-const MOCK_DESTINATIONS = [
-  {
-    id: '1',
-    name: 'Sigiriya Rock Fortress',
-    location: 'Central Province',
-    price: 30,
-    category: 'Heritage',
-    image: '/images/sigiriya.jpg',
-    rating: 4.9,
-  },
-  {
-    id: '2',
-    name: 'Mirissa Beach',
-    location: 'Southern Province',
-    price: 45,
-    category: 'Beach',
-    image: '/images/mirissa.jpg',
-    rating: 4.8,
-  },
-  {
-    id: '3',
-    name: 'Nine Arch Bridge',
-    location: 'Ella, Uva Province',
-    price: 15,
-    category: 'Mountain',
-    image: '/images/nine-arch-bridge.jpg',
-    rating: 4.7,
-  },
-  {
-    id: '4',
-    name: 'Yala National Park',
-    location: 'Southern Province',
-    price: 60,
-    category: 'Wildlife',
-    image: '/images/yala.jpg',
-    rating: 4.6,
-  },
-  {
-    id: '5',
-    name: 'Temple of the Tooth',
-    location: 'Kandy, Central Province',
-    price: 20,
-    category: 'Heritage',
-    image: '/images/temple-of-the-tooth.jpg',
-    rating: 4.8,
-  },
-  {
-    id: '6',
-    name: 'Unawatuna Beach',
-    location: 'Galle, Southern Province',
-    price: 40,
-    category: 'Beach',
-    image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80',
-    rating: 4.5,
-  },
-];
+interface Destination {
+  _id: string;
+  name: string;
+  location: string;
+  price: number;
+  category: string;
+  image: string;
+  rating: number;
+}
 
 const CATEGORIES = ['All', 'Beach', 'Mountain', 'Heritage', 'Wildlife'];
 
 export default function DestinationsPage() {
+  const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredDestinations = MOCK_DESTINATIONS.filter((dest) => {
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const response = await fetch('/api/destinations');
+        const data = await response.json();
+        if (data.success) {
+          setDestinations(data.data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch destinations:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDestinations();
+  }, []);
+
+  const filteredDestinations = destinations.filter((dest) => {
     const matchesSearch = dest.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           dest.location.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || dest.category === selectedCategory;
@@ -120,10 +92,14 @@ export default function DestinationsPage() {
         </div>
 
         {/* Destinations Grid */}
-        {filteredDestinations.length > 0 ? (
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+          </div>
+        ) : filteredDestinations.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredDestinations.map((dest) => (
-              <div key={dest.id} className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group border border-gray-100 dark:border-gray-800 flex flex-col transform hover:-translate-y-1">
+              <div key={dest._id} className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group border border-gray-100 dark:border-gray-800 flex flex-col transform hover:-translate-y-1">
                 <div className="relative h-60 overflow-hidden">
                   <div className="absolute top-4 right-4 z-20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-bold text-gray-900 dark:text-white flex items-center gap-1.5 shadow-sm">
                     <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -156,7 +132,7 @@ export default function DestinationsPage() {
                       <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Price per night</span>
                       <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">${dest.price}</div>
                     </div>
-                    <Link href={`/destinations/${dest.id}`} className="px-6 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white transition-colors shadow-sm">
+                    <Link href={`/destinations/${dest._id}`} className="px-6 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white transition-colors shadow-sm">
                       View
                     </Link>
                   </div>
@@ -183,3 +159,4 @@ export default function DestinationsPage() {
     </div>
   );
 }
+
