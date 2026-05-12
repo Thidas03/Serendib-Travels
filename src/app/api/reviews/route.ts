@@ -2,26 +2,23 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Review from '@/models/Review';
 import User from '@/models/User';
+import { reviewSchema } from '@/lib/validations';
 
 export async function POST(req: Request) {
   try {
     await dbConnect();
     const body = await req.json();
-    const { destinationId, rating, comment } = body;
-
-    if (!destinationId || !rating || !comment) {
+    
+    // Validate request body
+    const result = reviewSchema.safeParse(body);
+    if (!result.success) {
       return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
+        { success: false, error: result.error.issues[0].message },
         { status: 400 }
       );
     }
-
-    if (rating < 1 || rating > 5) {
-      return NextResponse.json(
-        { success: false, error: 'Rating must be between 1 and 5' },
-        { status: 400 }
-      );
-    }
+    
+    const { destinationId, rating, comment } = result.data;
 
     // Since auth is not implemented, we will find an existing user or create a mock one.
     let user = await User.findOne({ email: 'guest@serendibtravels.com' });

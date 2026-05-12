@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { searchSchema } from '@/lib/validations';
+import { ErrorMessage } from '@/components/ui/ErrorMessage';
 
 interface Destination {
   _id: string;
@@ -19,6 +21,7 @@ export default function DestinationsPage() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchError, setSearchError] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
@@ -39,11 +42,23 @@ export default function DestinationsPage() {
   }, []);
 
   const filteredDestinations = destinations.filter((dest) => {
-    const matchesSearch = dest.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          dest.location.toLowerCase().includes(searchQuery.toLowerCase());
+    const query = searchQuery.toLowerCase();
+    const matchesSearch = !searchError && (dest.name.toLowerCase().includes(query) || 
+                          dest.location.toLowerCase().includes(query));
     const matchesCategory = selectedCategory === 'All' || dest.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    const result = searchSchema.safeParse({ query: val });
+    if (!result.success) {
+      setSearchError(result.error.issues[0].message);
+    } else {
+      setSearchError('');
+    }
+    setSearchQuery(val);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 pt-24 pb-16">
@@ -69,9 +84,12 @@ export default function DestinationsPage() {
               type="text"
               placeholder="Search by name or location..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all shadow-sm"
+              onChange={handleSearchChange}
+              className={`pl-10 w-full px-4 py-3 rounded-lg border ${
+                searchError ? 'border-red-300 focus:ring-red-500' : 'border-gray-200 dark:border-gray-800 focus:ring-emerald-500'
+              } bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent outline-none transition-all shadow-sm`}
             />
+            <ErrorMessage message={searchError} />
           </div>
           
           <div className="w-full md:w-auto flex flex-wrap gap-2 justify-center">

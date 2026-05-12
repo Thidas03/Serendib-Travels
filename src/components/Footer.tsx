@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import Newsletter from './Newsletter';
 
 export default function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 pt-16 pb-8 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2 mb-4">
               <span className="text-emerald-600 dark:text-emerald-400">Serendib</span> Travels
@@ -28,6 +29,9 @@ export default function Footer() {
               <li><Link href="/privacy" className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Terms of Service</Link></li>
             </ul>
+          </div>
+          <div className="col-span-1 md:col-span-2">
+            <Newsletter />
           </div>
         </div>
         <div className="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
