@@ -34,13 +34,14 @@ export const reviewSchema = z.object({
 
 export const contactSchema = z.object({
   name: z.string()
+    .trim()
     .min(1, 'Name is required')
     .max(50, 'Name is too long')
     .regex(/^[a-zA-Z\s]*$/, 'Name can only contain letters and spaces')
     .transform(sanitize),
-  email: z.string().min(1, 'Email is required').email('Invalid email address'),
-  subject: z.string().min(5, 'Subject must be at least 5 characters').max(100, 'Subject is too long').transform(sanitize),
-  message: z.string().min(20, 'Message must be at least 20 characters').max(1000, 'Message is too long').transform(sanitize),
+  email: z.string().trim().min(1, 'Email is required').email('Invalid email address'),
+  subject: z.string().trim().min(5, 'Subject must be at least 5 characters').max(100, 'Subject is too long').transform(sanitize),
+  message: z.string().trim().min(20, 'Message must be at least 20 characters').max(1000, 'Message is too long').transform(sanitize),
 });
 
 export const newsletterSchema = z.object({
