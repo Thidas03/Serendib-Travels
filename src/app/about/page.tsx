@@ -39,7 +39,7 @@ export default function AboutPage() {
         <div className="inline-block w-12 h-1 bg-emerald-600 mb-8 rounded-full" />
         <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8 tracking-tight">Our Story</h2>
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl mx-auto font-medium">
-          Serendib Travels was founded with a simple yet profound purpose: to unveil the hidden gems of the teardrop island to the world. We believe that traveling is more than just visiting places; it's about immersing yourself in the local <span className="text-emerald-600 dark:text-emerald-450 font-bold">culture</span>, witnessing pristine <span className="text-emerald-600 dark:text-emerald-450 font-bold">nature</span>, relaxing on sun-kissed <span className="text-emerald-600 dark:text-emerald-450 font-bold">beaches</span>, exploring ancient <span className="text-emerald-600 dark:text-emerald-450 font-bold">heritage</span>, and embarking on thrilling <span className="text-emerald-600 dark:text-emerald-450 font-bold">adventure</span>. We curate experiences that leave a lasting imprint on your soul.
+          Serendib Travels was founded with a simple yet profound purpose: to unveil the hidden gems of the teardrop island to the world. We believe that traveling is more than just visiting places; it&apos;s about immersing yourself in the local <span className="text-emerald-600 dark:text-emerald-450 font-bold">culture</span>, witnessing pristine <span className="text-emerald-600 dark:text-emerald-450 font-bold">nature</span>, relaxing on sun-kissed <span className="text-emerald-600 dark:text-emerald-450 font-bold">beaches</span>, exploring ancient <span className="text-emerald-600 dark:text-emerald-450 font-bold">heritage</span>, and embarking on thrilling <span className="text-emerald-600 dark:text-emerald-450 font-bold">adventure</span>. We curate experiences that leave a lasting imprint on your soul.
         </p>
       </section>
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Our Mission</h3>
               <p className="text-lg text-gray-650 dark:text-gray-305 leading-relaxed">
-                To provide authentic, sustainable, and unforgettable travel experiences in Sri Lanka while empowering local communities and preserving the island's natural, wild, and cultural heritage.
+                To provide authentic, sustainable, and unforgettable travel experiences in Sri Lanka while empowering local communities and preserving the island&apos;s natural, wild, and cultural heritage.
               </p>
             </div>
           </div>

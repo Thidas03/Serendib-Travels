@@ -147,7 +147,7 @@ export default function DestinationsPage() {
 
                   <div className="mt-auto pt-5 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
                     <div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Price per night</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Price per visit</span>
                       <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">${dest.price}</div>
                     </div>
                     <Link href={`/destinations/${dest._id}`} className="px-6 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:text-white transition-colors shadow-sm">

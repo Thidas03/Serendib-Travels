@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wanderlust | Tourism Management System",
+  title: "Serendib - Explore SriLanka",
   description: "Your ultimate travel companion for discovering new destinations and managing bookings.",
 };
 

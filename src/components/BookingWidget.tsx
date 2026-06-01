@@ -12,20 +12,36 @@ export default function BookingWidget({ destinationId, price }: BookingWidgetPro
   const [date, setDate] = useState('');
   const [travelers, setTravelers] = useState(1);
   const [isBooking, setIsBooking] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [error, setError] = useState('');
-  const [minDate, setMinDate] = useState('');
   const router = useRouter();
 
   useEffect(() => {
-    // Get tomorrow's date for the min date attribute on the client only
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    setMinDate(tomorrow.toISOString().split('T')[0]);
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
+
+  const minDate = isMounted
+    ? (() => {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        return tomorrow.toISOString().split('T')[0];
+      })()
+    : '';
 
   const totalPrice = price * travelers;
 
   const handleBook = async () => {
+    // Check if user is logged in
+    const user = localStorage.getItem('user');
+    if (!user) {
+      alert('Please login to book this destination.');
+      router.push(`/login?redirect=${encodeURIComponent(window.location.pathname)}`);
+      return;
+    }
+
     if (!date) {
       setError('Please select a date.');
       return;
@@ -129,7 +145,7 @@ export default function BookingWidget({ destinationId, price }: BookingWidgetPro
       </button>
       
       <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
-        You won't be charged yet.
+        You won&apos;t be charged yet.
       </p>
       
       <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">

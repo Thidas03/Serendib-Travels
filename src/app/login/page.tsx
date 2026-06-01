@@ -30,8 +30,18 @@ export default function LoginPage() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log('Login attempt with:', data);
-      alert('Login successful! Redirecting to home...');
-      router.push('/');
+      
+      // Store user state
+      localStorage.setItem('user', JSON.stringify({ email: data.email, isLoggedIn: true }));
+      // Notify other components (like Navbar) locally
+      window.dispatchEvent(new Event('storage'));
+      
+      alert('Login successful!');
+      
+      // Redirect to the original page or home
+      const searchParams = new URLSearchParams(window.location.search);
+      const redirectPath = searchParams.get('redirect') || '/';
+      router.push(redirectPath);
     } catch (err) {
       setServerError('An unexpected error occurred. Please try again.');
     }
