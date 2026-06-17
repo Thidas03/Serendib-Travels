@@ -36,10 +36,10 @@ export const tourPackages: TourPackage[] = [
       'Climb Sigiriya Rock Fortress, visit the Temple of the Tooth in Kandy, and explore the golden cave temples of Dambulla on an authentic heritage journey.',
     price: 1580,
     category: 'Heritage',
-    image: '/images/sigiriya.JPG',
+    image: '/images/sigiriya.jpg',
     badge: 'Premium',
     featured: true,
-    gallery: ['/images/sigiriya.JPG', '/images/temple-of-the-tooth.JPG', '/images/sigiriya.JPG'],
+    gallery: ['/images/sigiriya.jpg', '/images/temple-of-the-tooth.jpg', '/images/sigiriya.jpg'],
     itinerary: [
       {
         day: 'Day 1',
@@ -128,10 +128,10 @@ export const tourPackages: TourPackage[] = [
       'Walk the iconic Nine Arch Bridge, hike Little Adam’s Peak, and wander tea estates in Nuwara Eliya for a refreshing mountain retreat.',
     price: 1240,
     category: 'Nature',
-    image: '/images/nine-arch-bridge.JPG',
+    image: '/images/nine-arch-bridge.jpg',
     badge: 'Popular',
     featured: false,
-    gallery: ['/images/nine-arch-bridge.JPG', '/images/about-hero.jpg', '/images/nine-arch-bridge.JPG'],
+    gallery: ['/images/nine-arch-bridge.jpg', '/images/about-hero.jpg', '/images/nine-arch-bridge.jpg'],
     itinerary: [
       {
         day: 'Day 1',
@@ -202,10 +202,10 @@ export const tourPackages: TourPackage[] = [
       'Watch whales from Mirissa, stroll along historic Galle Fort, and relax on Unawatuna’s golden bay for an unforgettable southern coast escape.',
     price: 1390,
     category: 'Adventure',
-    image: '/images/mirissa.JPG',
+    image: '/images/mirissa.jpg',
     badge: 'Exclusive',
     featured: false,
-    gallery: ['/images/mirissa.JPG', '/images/galle-fort.jpg', '/images/mirissa.JPG'],
+    gallery: ['/images/mirissa.jpg', '/images/galle-fort.jpg', '/images/mirissa.jpg'],
     itinerary: [
       {
         day: 'Day 1',
@@ -289,10 +289,10 @@ export const tourPackages: TourPackage[] = [
       'Set out on a private safari in Yala National Park to spot leopards, elephants, and vibrant birdlife while staying in a premium wilderness lodge.',
     price: 980,
     category: 'Wildlife',
-    image: '/images/yala.JPG',
+    image: '/images/yala.jpg',
     badge: 'Adventure',
     featured: false,
-    gallery: ['/images/yala.JPG', '/images/about-hero.jpg', '/images/yala.JPG'],
+    gallery: ['/images/yala.jpg', '/images/about-hero.jpg', '/images/yala.jpg'],
     itinerary: [
       {
         day: 'Day 1',
