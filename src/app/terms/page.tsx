@@ -107,7 +107,7 @@ export default function TermsOfServicePage() {
                   <h2 className="text-2xl font-semibold text-slate-950">Content Accuracy</h2>
                 </div>
                 <p className="text-slate-600 leading-8">
-                  While we strive to provide accurate and up-to-date information, all content on the website is provided "as is." We do not guarantee that descriptions, pricing, or availability are error-free.
+                  While we strive to provide accurate and up-to-date information, all content on the website is provided &quot;as is.&quot; We do not guarantee that descriptions, pricing, or availability are error-free.
                 </p>
                 <p className="text-slate-600 leading-8">
                   Any images, descriptions, or recommendations are illustrative and may change without notice.

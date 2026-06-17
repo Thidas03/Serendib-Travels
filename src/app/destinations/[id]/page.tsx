@@ -30,7 +30,7 @@ export default async function DestinationDetailsPage({ params }: { params: Promi
         averageRating = Number((sum / reviews.length).toFixed(1));
       }
     }
-  } catch (error) {
+  } catch {
     // If ID is invalid
     notFound();
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type BookingForm = {
   name: string;
@@ -34,12 +34,6 @@ export default function BookingInquiryModal({ tourName, tourId, onClose }: Props
   const [errors, setErrors] = useState<Partial<Record<keyof BookingForm, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [savedInquiry, setSavedInquiry] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('tourInquirySaved');
-    setSavedInquiry(saved === 'true');
-  }, []);
 
   const validate = () => {
     const nextErrors: Partial<Record<keyof BookingForm, string>> = {};

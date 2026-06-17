@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import BookingInquiryModal from '@/components/BookingInquiryModal';
-import { getTourById, TourPackage } from '@/lib/tours';
+import { getTourById } from '@/lib/tours';
 
 interface Props {
   params: {

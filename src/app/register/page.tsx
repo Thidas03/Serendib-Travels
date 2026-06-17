@@ -32,7 +32,7 @@ export default function RegisterPage() {
       console.log('Registered User Data:', data);
       alert('Registration successful! Redirecting to login...');
       router.push('/login');
-    } catch (err) {
+    } catch {
       setServerError('An unexpected error occurred. Please try again.');
     }
   };

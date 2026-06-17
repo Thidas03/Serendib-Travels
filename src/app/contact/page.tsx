@@ -85,7 +85,7 @@ export default function ContactPage() {
           message: result.error || 'Failed to send your message. Please try again.' 
         });
       }
-    } catch (err) {
+    } catch {
       setServerStatus({ 
         type: 'error', 
         message: 'An unexpected error occurred. Please check your connection and try again.' 

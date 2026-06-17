@@ -224,7 +224,7 @@ export default function ToursPage() {
             <p className="text-slate-300 leading-7">Our team is here to ensure your journey is smooth, secure, and tailored to your expectations.</p>
           </div>
           <div className="space-y-4">
-            {faqs.map((item, index) => (
+            {faqs.map((item) => (
               <button
                 type="button"
                 key={item.question}

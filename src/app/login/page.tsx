@@ -42,8 +42,8 @@ export default function LoginPage() {
       const searchParams = new URLSearchParams(window.location.search);
       const redirectPath = searchParams.get('redirect') || '/';
       router.push(redirectPath);
-    } catch (err) {
-      setServerError('An unexpected error occurred. Please try again.');
+    } catch {
+      setServerError('An unexpected error occurred. Please check your connection and try again.');
     }
   };
 

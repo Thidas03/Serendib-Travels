@@ -38,7 +38,7 @@ export default function Newsletter() {
       } else {
         setStatus('error');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
     }
   };
