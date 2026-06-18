@@ -142,13 +142,13 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <LocationCard 
-              image="/images/sigiriya.JPG"
+              image="/images/sigiriya.jpg"
               title="Sigiriya"
               category="Heritage"
               description="The towering ancient rock fortress known as the Eighth Wonder of the World."
             />
             <LocationCard 
-              image="/images/nine-arch-bridge.JPG"
+              image="/images/nine-arch-bridge.jpg"
               title="Ella"
               category="Mountain"
               description="Lush green tea estates, majestic colonial bridges, and cool highland breezes."
@@ -160,7 +160,7 @@ export default function AboutPage() {
               description="A beautifully preserved oceanfront colonial fortress town with cobbled alleys."
             />
             <LocationCard 
-              image="/images/mirissa.JPG"
+              image="/images/mirissa.jpg"
               title="Mirissa"
               category="Beach"
               description="Golden tropical sands, vibrant coastline cafes, and whale watching safaris."
